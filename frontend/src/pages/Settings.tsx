@@ -72,11 +72,11 @@ export default function SettingsPage() {
       <div className="mx-auto max-w-3xl space-y-5 p-6">
         {section(
           "🔌 AI 接口",
-          "令牌与中转地址在 backend/.env 中配置（留空则沿用终端环境变量 ANTHROPIC_BASE_URL / ANTHROPIC_AUTH_TOKEN）。修改 .env 后无需重启。",
+          "API Key 在 backend/.env 中配置（留空则沿用终端环境变量 ANTHROPIC_API_KEY）。修改 .env 后无需重启。",
           <div className="space-y-2 text-sm">
             <div>
               状态：
-              {s.api_configured ? <span className="text-emerald-600">已检测到令牌</span> : <span className="text-red-600">未配置令牌</span>}
+              {s.api_configured ? <span className="text-emerald-600">已检测到 API Key</span> : <span className="text-red-600">未配置 API Key</span>}
               <span className="ml-3 text-stone-500">地址：{s.base_url}</span>
             </div>
             <div className="flex items-center gap-2">
@@ -84,7 +84,7 @@ export default function SettingsPage() {
                 {test.loading ? <Loader2 size={14} className="animate-spin" /> : <Zap size={14} />} 测试当前阅读模型
               </button>
               <button onClick={fetchRemote} className="btn btn-outline">
-                <Download size={14} /> 从中转服务获取模型列表
+                <Download size={14} /> 从 API 获取模型列表
               </button>
             </div>
             {test.msg && <p className={`text-xs ${test.ok ? "text-emerald-700" : "text-red-600"}`}>{test.msg}</p>}
@@ -104,7 +104,7 @@ export default function SettingsPage() {
               <ModelPicker value={s.reader_model} onChange={(m) => up({ reader_model: m })} />
             </div>
             <div>
-              <div className="mb-1 text-xs text-stone-500">自定义模型（中转服务支持的任意模型名）</div>
+              <div className="mb-1 text-xs text-stone-500">自定义模型（接口支持的任意模型名）</div>
               <div className="mb-2 flex flex-wrap gap-1">
                 {s.custom_models.map((m) => (
                   <span key={m} className="chip">

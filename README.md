@@ -6,13 +6,18 @@
 ./start.sh dev    # 开发模式（前端热更新）http://localhost:5173
 ```
 
-## 配置 API（中转服务）
+## 配置 API
+使用 Anthropic 官方 API。在 [Anthropic Console](https://console.anthropic.com/settings/keys) 创建 API Key，然后：
+```bash
+cp backend/.env.example backend/.env
+```
 编辑 `backend/.env`：
 ```
-ANTHROPIC_BASE_URL=http://你的中转地址:端口
-ANTHROPIC_AUTH_TOKEN=你的令牌
+ANTHROPIC_API_KEY=sk-ant-你的密钥
 ```
-留空时会沿用终端里的同名环境变量（即 Claude Code 正在用的中转配置）。修改后无需重启。
+留空时会沿用终端里的同名环境变量。修改后无需重启。`backend/.env` 已被 `.gitignore` 忽略，不会被提交。
+
+如需走代理或兼容网关，可另外填写 `ANTHROPIC_BASE_URL`（以及网关要求时的 `ANTHROPIC_AUTH_TOKEN`），详见 `backend/.env.example`。
 
 ## 功能
 - **☀️ 今日**：首页有活跃度仪表盘，并分两个标签：

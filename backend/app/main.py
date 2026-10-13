@@ -59,7 +59,7 @@ def _papers_by_ids(ids: list[str]) -> dict[str, dict]:
 def read_settings():
     cred = llm_credentials()
     return {**get_settings(), "api_configured": bool(cred["auth_token"] or cred["api_key"]),
-            "base_url": cred["base_url"] or "(默认 api.anthropic.com)"}
+            "base_url": cred["base_url"] or "官方 api.anthropic.com"}
 
 
 @app.put("/api/settings")

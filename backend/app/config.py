@@ -16,7 +16,7 @@ for d in (DATA_DIR, PDF_DIR, TEXT_DIR):
 
 def llm_credentials() -> dict:
     """Values in backend/.env win; blank entries fall back to the shell environment
-    (e.g. the ANTHROPIC_* vars your relay setup script exported for Claude Code)."""
+    (e.g. an ANTHROPIC_API_KEY exported in your shell profile)."""
     file_vals = dotenv_values(ENV_PATH) if ENV_PATH.exists() else {}
 
     def pick(name: str) -> str | None:
@@ -29,13 +29,12 @@ def llm_credentials() -> dict:
     }
 
 
-# Shown in the model pickers; users can add more in Settings or fetch from the relay.
+# Shown in the model pickers; users can add more in Settings or fetch from the API.
 DEFAULT_MODELS = [
     "claude-opus-5-5",
-    "claude-opus-5",
-    "claude-sonnet-5",
-    "claude-sonnet-4-6",
-    "claude-haiku-4-5-20251001",
+    "claude-sonnet-5-5",
+    "claude-haiku-5-5",
+    "claude-fable-5-1",
 ]
 
 DEFAULT_SETTINGS = {
