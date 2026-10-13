@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+anthropic>=1.13
+httpx
+pymupdf
+python-dotenv
+feedparser

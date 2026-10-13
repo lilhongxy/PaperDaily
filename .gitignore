@@ -1,0 +1,13 @@
+.conda-env/
+data/
+backend/.env
+node_modules/
+frontend/dist/
+__pycache__/
+.DS_Store
+*.log
+.env.*
+!.env.example
+.claude/
+.vscode/
+.idea/
